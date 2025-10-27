@@ -1,0 +1,5 @@
+{
+  "name": "Imagen AI Studio",
+  "description": "A sleek, professional AI image generation web application powered by Google's Imagen model. Users can enter detailed prompts to generate high-resolution visuals, select aspect ratios, and apply various artistic styles.",
+  "requestFramePermissions": []
+}
