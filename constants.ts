@@ -1,4 +1,3 @@
-
 import { type StylePreset } from './types';
 
 export const ASPECT_RATIOS = [
@@ -17,4 +16,17 @@ export const STYLE_PRESETS: StylePreset[] = [
   { id: 'cinematic', name: 'Cinematic', prefix: 'cinematic still, dramatic lighting, epic composition, anamorphic lens flare, movie grade,' },
   { id: 'anime', name: 'Anime', prefix: 'anime style, makoto shinkai style, beautiful lighting, detailed background, studio ghibli,' },
   { id: 'minimalist', name: 'Minimalist', prefix: 'minimalist, clean lines, simple, elegant, single object,' },
+];
+
+export const PROMPT_SUGGESTIONS = [
+    'A majestic lion wearing a crown',
+    'Futuristic cityscape at night',
+    'Enchanted forest with glowing mushrooms',
+    'Steampunk airship soaring through clouds',
+    'A cat wizard casting a spell',
+    'Underwater coral reef teeming with life',
+    'A cozy cabin in a snowy landscape',
+    'Robot exploring an alien planet',
+    'A delicious-looking plate of pasta',
+    'Surreal dreamscape with floating islands',
 ];

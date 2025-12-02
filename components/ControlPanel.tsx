@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { ASPECT_RATIOS, STYLE_PRESETS } from '../constants';
+import { ASPECT_RATIOS, STYLE_PRESETS, PROMPT_SUGGESTIONS } from '../constants';
 import { Wand2 } from './IconComponents';
 
 interface ControlPanelProps {
@@ -24,21 +23,43 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
   isLoading,
   onGenerate,
 }) => {
+  const handleSuggestionClick = (suggestion: string) => {
+    setPrompt(prev => (prev ? `${prev}, ${suggestion}` : suggestion).trim());
+  };
+
   return (
     <div className="w-full md:w-1/3 lg:w-1/4 bg-gray-800/50 border border-gray-700 rounded-lg p-6 flex flex-col gap-6 h-fit md:sticky md:top-24">
       <h2 className="text-xl font-semibold text-white">Create Your Vision</h2>
       
-      <div className="flex flex-col gap-2">
-        <label htmlFor="prompt" className="font-medium text-gray-300">Prompt</label>
-        <textarea
-          id="prompt"
-          rows={5}
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="e.g., A majestic lion wearing a crown in a futuristic city"
-          className="bg-gray-900 border border-gray-600 rounded-md p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors text-gray-200 placeholder-gray-500"
-          disabled={isLoading}
-        />
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+            <label htmlFor="prompt" className="font-medium text-gray-300">Prompt</label>
+            <textarea
+              id="prompt"
+              rows={5}
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="e.g., A majestic lion wearing a crown in a futuristic city"
+              className="bg-gray-900 border border-gray-600 rounded-md p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors text-gray-200 placeholder-gray-500"
+              disabled={isLoading}
+            />
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <h3 className="text-sm font-medium text-gray-400">Need inspiration?</h3>
+          <div className="flex flex-wrap gap-2">
+            {PROMPT_SUGGESTIONS.map((suggestion, index) => (
+              <button
+                key={index}
+                onClick={() => handleSuggestionClick(suggestion)}
+                className="bg-gray-700/50 text-gray-300 text-xs font-medium px-3 py-1 rounded-full hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={isLoading}
+              >
+                {suggestion}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col gap-2">
